@@ -84,6 +84,8 @@ public class AdvisorDashboard {
                     if (clickedButton == complaintBtn) {
                         System.out.println("Complaints button pressed...");
 
+                        model.setRowCount(0);
+
                         String[] columnNames = {"Complaint ID", "Student ID", "Category", "Details of Issue"};
                         model.setColumnIdentifiers(columnNames);
 
