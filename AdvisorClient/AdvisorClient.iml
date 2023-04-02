@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager">
+    <libelement value="file:///Users/rajaerobinson/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32.jar" />
+    <libelement value="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/antlr-2.7.7.jar" />
+    <libelement value="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/byte-buddy-1.12.7.jar" />
+    <libelement value="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/classmate-1.5.1.jar" />
+    <libelement value="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/FastInfoset-1.2.15.jar" />
+    <libelement value="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/hibernate-commons-annotations-5.1.2.Final.jar" />
+    <libelement value="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/hibernate-core-5.6.5.Final.jar" />
+    <libelement value="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/istack-commons-runtime-3.0.7.jar" />
+    <libelement value="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/jandex-2.4.2.Final.jar" />
+    <libelement value="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/javax.activation-api-1.2.0.jar" />
+    <libelement value="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/javax.persistence-api-2.2.jar" />
+    <libelement value="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/jaxb-api-2.3.1.jar" />
+    <libelement value="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/jaxb-runtime-2.3.1.jar" />
+    <libelement value="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/jboss-logging-3.4.3.Final.jar" />
+    <libelement value="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/jboss-transaction-api_1.2_spec-1.1.1.Final.jar" />
+    <libelement value="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/stax-ex-1.8.jar" />
+    <libelement value="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/txw2-2.3.1.jar" />
+    <src_description expected_position="0">
+      <src_folder value="file://$MODULE_DIR$/src" expected_position="0" />
+    </src_description>
+  </component>
+  <component name="FacetManager">
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map>
+          <unit-entry name="hibernate.cfg.xml" value="f69aa460-4c45-49b8-8472-f7a92fbec64d" />
+        </datasource-map>
+        <naming-strategy-map />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/hibernate.cfg.xml" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/bin" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="jdk" jdkName="JavaSE-17" jdkType="JavaSDK" />
+    <orderEntry type="module-library">
+      <library name="mysql-connector-j-8.0.32.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="antlr-2.7.7.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/antlr-2.7.7.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="byte-buddy-1.12.7.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/byte-buddy-1.12.7.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="classmate-1.5.1.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/classmate-1.5.1.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="FastInfoset-1.2.15.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/FastInfoset-1.2.15.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="hibernate-commons-annotations-5.1.2.Final.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/hibernate-commons-annotations-5.1.2.Final.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="hibernate-core-5.6.5.Final.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/hibernate-core-5.6.5.Final.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="istack-commons-runtime-3.0.7.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/istack-commons-runtime-3.0.7.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jandex-2.4.2.Final.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/jandex-2.4.2.Final.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="javax.activation-api-1.2.0.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/javax.activation-api-1.2.0.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="javax.persistence-api-2.2.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/javax.persistence-api-2.2.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jaxb-api-2.3.1.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/jaxb-api-2.3.1.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jaxb-runtime-2.3.1.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/jaxb-runtime-2.3.1.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jboss-logging-3.4.3.Final.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/jboss-logging-3.4.3.Final.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jboss-transaction-api_1.2_spec-1.1.1.Final.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/jboss-transaction-api_1.2_spec-1.1.1.Final.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="stax-ex-1.8.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/stax-ex-1.8.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="txw2-2.3.1.jar">
+        <CLASSES>
+          <root url="file:///Users/rajaerobinson/hibernate-release-5.6.5.Final/lib/required/txw2-2.3.1.jar" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../JARs/hibernate 5.6.5" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/../../JARs/hibernate 5.6.5" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../JARs/mqsqlconnectorj" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/../../JARs/mqsqlconnectorj" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../JARs/log4j/log4j-api-2.20.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../JARs/log4j/log4j-core-2.20.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>

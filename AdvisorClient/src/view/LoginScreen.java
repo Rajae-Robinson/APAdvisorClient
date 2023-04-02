@@ -1,10 +1,14 @@
 package view;
 
+import controller.Client;
+import org.hibernate.HibernateException;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,10 +17,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-//import model.Login;
+import model.Login;
 
 public class LoginScreen implements ActionListener {
-	private JFrame loginFrame = new DefaultFrame();
+    public static String loginID = "";
+    private JFrame loginFrame = new DefaultFrame();
 	private JButton loginButton;
 	private JTextField idField;
 	private JPasswordField passwordField;
@@ -76,28 +81,34 @@ public class LoginScreen implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		 // Handle login button click event
 	      if (e.getSource() == loginButton) {
-	         int id = Integer.parseInt(idField.getText());
+              String id = idField.getText();
 	         char[] passwordChars = passwordField.getPassword();
 	         String password = new String(passwordChars);
 
 	         // Authenticate user
-//	         boolean isAuthenticated = false;
-//	         Login login = new Login(id, password);
-//	         try {
-//	             isAuthenticated = login.authenticate();
-//	         } catch (HibernateException ex) {
-//	             JOptionPane.showMessageDialog(loginFrame, ex.getMessage());
-//	             return;
-//	         }
-//
-//	         // Check if authentication succeeded
-//	         if (isAuthenticated) {
-//	             JOptionPane.showMessageDialog(loginFrame, "Login successful");
-//	             new DashboardScreen();
-//	             loginFrame.dispose(); // Close the login frame
-//	         } else {
-//	             JOptionPane.showMessageDialog(loginFrame, "Invalid id or password");
-//	         }
+	         boolean isAuthenticated = false;
+              Client client = new Client();
+	         try {
+                 //Requests auth
+                 client.sendAction("authenticate");
+                 client.authenticate(id, password);
+
+                 //Receives auth response
+                 isAuthenticated = client.receiveAuthResp();
+	         } catch (IOException ex) {
+	             JOptionPane.showMessageDialog(loginFrame, ex.getMessage());
+	             return;
+	         }
+
+	         // Check if authentication succeeded
+	         if (isAuthenticated) {
+                 loginID =id;
+	             JOptionPane.showMessageDialog(loginFrame, "Login successful");
+	             AdvisorDashboard.main(null);
+	             loginFrame.dispose(); // Close the login frame
+	         } else {
+	             JOptionPane.showMessageDialog(loginFrame, "Invalid ID or password");
+	         }
 	      }
 	}
 	
