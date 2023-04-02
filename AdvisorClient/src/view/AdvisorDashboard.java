@@ -12,7 +12,8 @@ import model.Complaint;
 import model.Query;
 
 public class AdvisorDashboard {
-    private Client client = new Client();
+    private Client clientC = new Client();
+    private Client clientQ = new Client();
     JFrame frame = new DefaultFrame();
     JPanel mainPanel;
     JPanel cqPanel;
@@ -26,6 +27,8 @@ public class AdvisorDashboard {
     JButton queryBtn;
     List<Complaint> complaintsList;
     List<Query> queriesList;
+    int cqID;
+    String currentTable;
 
     public AdvisorDashboard() {
         initialiseComponents();
@@ -35,10 +38,11 @@ public class AdvisorDashboard {
 
     private void initialiseComponents() {
         //Request complaints and queries from server
-        client.sendAction("getComplaints");
-        complaintsList = client.receiveComplaintList();
-        client.sendAction("getQueries");
-        queriesList = client.receiveQueryList();
+        clientC.sendAction("getComplaints");
+        complaintsList = clientC.receiveComplaintList();
+        clientQ.sendAction("getQueries");
+        queriesList = clientQ.receiveQueryList();
+
 
         //Initialise the panels and define layouts
         mainPanel = new JPanel(new BorderLayout());
@@ -83,15 +87,15 @@ public class AdvisorDashboard {
                     JButton clickedButton = (JButton) e.getSource();
                     if (clickedButton == complaintBtn) {
                         System.out.println("Complaints button pressed...");
-
                         model.setRowCount(0);
 
+                        currentTable = "Complaint";
                         String[] columnNames = {"Complaint ID", "Student ID", "Category", "Details of Issue"};
                         model.setColumnIdentifiers(columnNames);
 
                         for (Complaint complaint : complaintsList) {
-                            Object[] rowData = {complaint.getComplaintID(), complaint.getStudentID(), complaint.getCategory(), complaint.getDetails()};
-                            model.addRow(rowData);
+                            Object[] data = {complaint.getComplaintID(), complaint.getStudentID(), complaint.getCategory(), complaint.getDetails()};
+                            model.addRow(data);
                         }
                     }
                 } catch (NullPointerException ex) {
@@ -108,16 +112,32 @@ public class AdvisorDashboard {
                     if (clickedButton == queryBtn) {
                         System.out.println("Queries button pressed...");
 
+                        model.setRowCount(0);
+
+                        currentTable = "Query";
                         String[] columnNames = {"Query ID", "Student ID", "Category", "Details of Issue"};
                         model.setColumnIdentifiers(columnNames);
 
                         for (Query query : queriesList) {
-                            Object[] rowData = {query.getQueryID(), query.getStudentID(), query.getCategory(), query.getDetails()};
-                            model.addRow(rowData);
+                            Object[] data = {query.getQueryID(), query.getStudentID(), query.getCategory(), query.getDetails()};
+                            model.addRow(data);
                         }
                     }
                 } catch (NullPointerException ex) {
                     System.out.println("Error: " + ex.getMessage());
+                }
+            }
+        });
+
+        ListSelectionModel selectionModel = cqTable.getSelectionModel();
+        selectionModel.addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {  // Ignore extra events
+                    int selectedRow = cqTable.getSelectedRow();
+                    if (selectedRow != -1) {  // If a row is selected
+                        // Get the data from the selected row
+                        cqID = (int) cqTable.getValueAt(selectedRow, 0);
+                    }
                 }
             }
         });
@@ -206,15 +226,28 @@ public class AdvisorDashboard {
 
         sendButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Prepare response info
-//                    Date responseDate = new Date();
-//                    String response = responseArea.getText();
-//                    int responderID = advisor.getAdvisorID();
-//
-//                    // Code to send message to server
-//                    Complaint complaint = new Complaint(responseDate, responderID, response);
- //                   client.sendComplaintResponse(complaint);
+                //Prepare response info
+                int responderID = Integer.parseInt(LoginScreen.loginID);
+                String response = responseArea.getText();
 
+                // Code to send message to server
+                if (currentTable == "Complaint") {
+                    Complaint complaint = new Complaint(cqID, responderID, response);
+                    System.out.println("Sending response to complaint #" + cqID + "...");
+                    System.out.println("complaintID: " + cqID + "\nresponderID: " + responderID
+                    + "\nresponse: " + response);
+                    clientC.sendAction("respondComplaint");
+                    clientC.sendComplaintResponse(complaint);
+                }
+
+                if (currentTable == "Query") {
+                    Query query = new Query(cqID, responderID, response);
+                    System.out.println("Sending response to query #" + cqID + "...");
+                    System.out.println("queryID: " + cqID + "\nresponderID: " + responderID
+                            + "\nresponse: " + response);
+                    clientQ.sendAction("respondQuery");
+                    clientQ.sendQueryResponse(query);
+                }
 
                 JOptionPane.showMessageDialog(frame, "Message sent!", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
                 Window root = (Window) SwingUtilities.getRoot((JComponent) e.getSource());  //Gets the root frame of the 'source' which is
