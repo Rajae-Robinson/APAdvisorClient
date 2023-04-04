@@ -23,12 +23,12 @@ public class Client {
     public Client() {
         this.createConnection();
         this.configureStreams();
+        System.out.println("Advisor Client Connected to server...");
     }
 
     private void createConnection() {
         try {
             connectionSocket = new Socket(HOST, PORT);
-            System.out.println("Advisor Client Connected to server...");
         } catch(IOException ex) {
             ex.printStackTrace();
         }
@@ -48,8 +48,8 @@ public class Client {
             objOS.close();
             objIS.close();
             connectionSocket.close();
-        } catch(IOException ex) {
-            ex.printStackTrace();
+        } catch(IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -58,8 +58,8 @@ public class Client {
         try {
             objOS.writeObject(action);
             objOS.flush();
-        } catch(IOException e) {
-            e.printStackTrace();
+        } catch(IOException ex) {
+            System.out.println("Error: " + ex.getMessage());
         }
     }
 
@@ -107,17 +107,6 @@ public class Client {
         }
         return authenticated;
     }
-
-    /*public Advisor receiveAdvisor() {
-        Advisor advisor = new Advisor();
-        try {
-            advisor = (Advisor) objIS.readObject();
-        } catch (ClassNotFoundException | IOException e) {
-            e.printStackTrace();
-        }
-        return advisor;
-    }*/
-
     public Query receiveQuery() {
         Query query = new Query();
         try {
