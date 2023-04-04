@@ -1,3 +1,7 @@
+/*
+ * Author: Rajae Robinson
+ */
+
 package model;
 
 import javax.persistence.Column;

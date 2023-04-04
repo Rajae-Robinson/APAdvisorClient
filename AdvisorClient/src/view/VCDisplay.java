@@ -1,4 +1,9 @@
+/*
+ * Author(s): Sydney Chambers
+ */
+
 package view;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

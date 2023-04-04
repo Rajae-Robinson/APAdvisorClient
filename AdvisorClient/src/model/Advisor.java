@@ -1,3 +1,7 @@
+/*
+ * Author(s): Rajae Robinson
+ */
+
 package model;
 
 import java.io.Serializable;

@@ -1,3 +1,8 @@
+/*
+ * Author(s): Rajae Robinson, Sydney Chambers
+ */
+
+
 package model;
 
 import java.io.Serializable;
@@ -16,13 +21,13 @@ public class Query implements Serializable {
 
 
     public Query() {
-        this.responseDate = new Date();
-        this.responderID = 1901709;
-        this.response = "Visit our website to do so.";
+        this.queryID = 0;
+        this.responderID = 0000000;
+        this.response = " - ";
     }
 
-    public Query(Date responseDate, Integer responderID, String response) {
-        this.responseDate = responseDate;
+    public Query(int queryID, Integer responderID, String response) {
+        this.queryID = queryID;
         this.responderID = responderID;
         this.response = response;
     }

@@ -1,3 +1,8 @@
+/*
+ * Author(s): Rajae Robinson, Sydney Chambers
+ */
+
+
 package view;
 
 import javax.swing.ImageIcon;

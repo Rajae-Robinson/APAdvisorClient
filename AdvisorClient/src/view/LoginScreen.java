@@ -1,3 +1,8 @@
+/*
+ * Author(s): Rajae Robinson
+ */
+
+
 package view;
 
 import controller.Client;

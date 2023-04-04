@@ -1,3 +1,8 @@
+/*
+ * Author(s): Rajae Robinson, Sydney Chambers
+ */
+
+
 package model;
 
 import java.util.Date;
@@ -15,8 +20,8 @@ public class Complaint implements Serializable {
 
     public Complaint() {
         this.complaintID = 0;
-        this.responderID = 1901709;
-        this.response = "We are working on it.";
+        this.responderID = 0000000;
+        this.response = " - ";
     }
 
     public Complaint (int complaintID, Integer responderID, String response) {

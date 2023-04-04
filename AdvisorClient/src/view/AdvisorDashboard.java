@@ -1,3 +1,8 @@
+/*
+ * Author(s): Sydney Chambers
+ */
+
+
 package view;
 
 import javax.swing.*;
@@ -27,6 +32,7 @@ public class AdvisorDashboard {
     List<Query> queriesList;
     int cqID;
     String currentTable;
+    private boolean recordSelected = false;
 
     public AdvisorDashboard() {
         initialiseComponents();
@@ -84,6 +90,8 @@ public class AdvisorDashboard {
                 try {
                     JButton clickedButton = (JButton) e.getSource();
                     if (clickedButton == complaintBtn) {
+                        replyBtn.setEnabled(false);
+                        
                         System.out.println("Complaints button pressed...");
                         Client clientC = new Client();
                         clientC.sendAction("getComplaints");
@@ -111,6 +119,8 @@ public class AdvisorDashboard {
                 try {
                     JButton clickedButton = (JButton) e.getSource();
                     if (clickedButton == queryBtn) {
+                        replyBtn.setEnabled(false);
+
                         System.out.println("Queries button pressed...");
                         Client clientQ = new Client();
                         clientQ.sendAction("getQueries");
@@ -160,6 +170,7 @@ public class AdvisorDashboard {
                 frame.dispose();
             }
         });
+
 
         //Enables the reply button when a record is selected
         cqTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
