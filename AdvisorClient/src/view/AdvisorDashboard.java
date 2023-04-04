@@ -12,8 +12,6 @@ import model.Complaint;
 import model.Query;
 
 public class AdvisorDashboard {
-    private Client clientC = new Client();
-    private Client clientQ = new Client();
     JFrame frame = new DefaultFrame();
     JPanel mainPanel;
     JPanel cqPanel;
@@ -38,10 +36,10 @@ public class AdvisorDashboard {
 
     private void initialiseComponents() {
         //Request complaints and queries from server
-        clientC.sendAction("getComplaints");
-        complaintsList = clientC.receiveComplaintList();
-        clientQ.sendAction("getQueries");
-        queriesList = clientQ.receiveQueryList();
+//        clientC.sendAction("getComplaints");
+//        complaintsList = clientC.receiveComplaintList();
+//        clientQ.sendAction("getQueries");
+//        queriesList = clientQ.receiveQueryList();
 
 
         //Initialise the panels and define layouts
@@ -87,6 +85,9 @@ public class AdvisorDashboard {
                     JButton clickedButton = (JButton) e.getSource();
                     if (clickedButton == complaintBtn) {
                         System.out.println("Complaints button pressed...");
+                        Client clientC = new Client();
+                        clientC.sendAction("getComplaints");
+                        complaintsList = clientC.receiveComplaintList();
                         model.setRowCount(0);
 
                         currentTable = "Complaint";
@@ -111,6 +112,9 @@ public class AdvisorDashboard {
                     JButton clickedButton = (JButton) e.getSource();
                     if (clickedButton == queryBtn) {
                         System.out.println("Queries button pressed...");
+                        Client clientQ = new Client();
+                        clientQ.sendAction("getQueries");
+                        queriesList = clientQ.receiveQueryList();
 
                         model.setRowCount(0);
 
@@ -137,6 +141,7 @@ public class AdvisorDashboard {
                     if (selectedRow != -1) {  // If a row is selected
                         // Get the data from the selected row
                         cqID = (int) cqTable.getValueAt(selectedRow, 0);
+                        System.out.println("Record selected is #" + cqID);
                     }
                 }
             }
@@ -236,8 +241,11 @@ public class AdvisorDashboard {
                     System.out.println("Sending response to complaint #" + cqID + "...");
                     System.out.println("complaintID: " + cqID + "\nresponderID: " + responderID
                     + "\nresponse: " + response);
-                    clientC.sendAction("respondComplaint");
-                    clientC.sendComplaintResponse(complaint);
+
+                    Client clientCR = new Client();
+                    clientCR.sendAction("respondComplaint");
+                    clientCR.sendComplaintResponse(complaint);
+                    System.out.println("Response sent!");
                 }
 
                 if (currentTable == "Query") {
@@ -245,13 +253,16 @@ public class AdvisorDashboard {
                     System.out.println("Sending response to query #" + cqID + "...");
                     System.out.println("queryID: " + cqID + "\nresponderID: " + responderID
                             + "\nresponse: " + response);
-                    clientQ.sendAction("respondQuery");
-                    clientQ.sendQueryResponse(query);
+
+                    Client clientQR = new Client();
+                    clientQR.sendAction("respondQuery");
+                    clientQR.sendQueryResponse(query);
+                    System.out.println("Response sent!");
                 }
 
                 JOptionPane.showMessageDialog(frame, "Message sent!", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
                 Window root = (Window) SwingUtilities.getRoot((JComponent) e.getSource());  //Gets the root frame of the 'source' which is
-                //the object on which the event occurred
+                                                                                            //the object on which the event occurred
                 root.dispose(); // Disposes of the root frame (the ResponseWindow)
             }
         });
@@ -292,7 +303,6 @@ public class AdvisorDashboard {
         frame.add(responsePanel);
         frame.setVisible(true);
     }
-
 
     public static void main(String[] args) {
         new AdvisorDashboard();
