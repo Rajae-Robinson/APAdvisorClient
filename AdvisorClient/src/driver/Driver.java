@@ -1,5 +1,5 @@
 /*
- * Author(s): Rajae Robinson, Sydney Chambers
+ * Author(s): Rajae Robinson
  */
 
 package driver;

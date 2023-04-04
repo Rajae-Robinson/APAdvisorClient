@@ -90,8 +90,6 @@ public class AdvisorDashboard {
                 try {
                     JButton clickedButton = (JButton) e.getSource();
                     if (clickedButton == complaintBtn) {
-                        replyBtn.setEnabled(false);
-
                         System.out.println("Complaints button pressed...");
                         Client clientC = new Client();
                         clientC.sendAction("getComplaints");
@@ -119,8 +117,6 @@ public class AdvisorDashboard {
                 try {
                     JButton clickedButton = (JButton) e.getSource();
                     if (clickedButton == queryBtn) {
-                        replyBtn.setEnabled(false);
-
                         System.out.println("Queries button pressed...");
                         Client clientQ = new Client();
                         clientQ.sendAction("getQueries");
@@ -257,6 +253,7 @@ public class AdvisorDashboard {
                     clientCR.sendAction("respondComplaint");
                     clientCR.sendComplaintResponse(complaint);
                     System.out.println("Response sent!");
+                    replyBtn.setEnabled(false);
                 }
 
                 if (currentTable == "Query") {
@@ -269,6 +266,7 @@ public class AdvisorDashboard {
                     clientQR.sendAction("respondQuery");
                     clientQR.sendQueryResponse(query);
                     System.out.println("Response sent!");
+                    replyBtn.setEnabled(false);
                 }
 
                 JOptionPane.showMessageDialog(frame, "Message sent!", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
