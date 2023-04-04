@@ -91,7 +91,7 @@ public class AdvisorDashboard {
                     JButton clickedButton = (JButton) e.getSource();
                     if (clickedButton == complaintBtn) {
                         replyBtn.setEnabled(false);
-                        
+
                         System.out.println("Complaints button pressed...");
                         Client clientC = new Client();
                         clientC.sendAction("getComplaints");
