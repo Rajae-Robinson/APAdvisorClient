@@ -11,6 +11,7 @@ import java.util.List;
 import model.Complaint;
 import model.Query;
 import model.Advisor;
+import model.Student;
 
 public class Client {
     private static final int PORT = 8888;
@@ -23,7 +24,7 @@ public class Client {
     public Client() {
         this.createConnection();
         this.configureStreams();
-        System.out.println("Advisor Client Connected to server...");
+        System.out.println("\nAdvisor Client Connected to server...");
     }
 
     private void createConnection() {
@@ -81,8 +82,16 @@ public class Client {
         }
     }
 
+    public void sendID(int id) {
+        try {
+            objOS.writeObject(id);
+            objOS.flush();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void sendID(String id) {
-        this.action = id;
         try {
             objOS.writeObject(id);
             objOS.flush();
@@ -107,6 +116,17 @@ public class Client {
         }
         return authenticated;
     }
+
+    public Student receiveStudent() {
+        Student student = new Student();
+        try {
+            student = (Student) objIS.readObject();
+        } catch (ClassNotFoundException | IOException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        return student;
+    }
+
     public Query receiveQuery() {
         Query query = new Query();
         try {
