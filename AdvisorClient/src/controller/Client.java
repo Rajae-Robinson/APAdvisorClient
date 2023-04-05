@@ -24,7 +24,6 @@ public class Client {
     public Client() {
         this.createConnection();
         this.configureStreams();
-        System.out.println("\nAdvisor Client Connected to server...");
     }
 
     private void createConnection() {

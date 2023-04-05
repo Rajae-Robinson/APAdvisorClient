@@ -305,13 +305,13 @@ public class AdvisorDashboard {
 
                 //Sets complaint-specific or query-specific message to be displayed on confirmation dialog
                 if (Objects.equals(currentTable, "Complaint")) {
-                    message = "Are you sure you want to send the following response for complaint #" + cqID + "?\n\n" +
-                            "complaintID: " + cqID + "\nresponderID: " + responderID + "\nresponse: " + response;
+                    message = "Are you sure you want to send the following response for complaint ticket #" + cqID + "?\n\n" +
+                            "Response: '" + response + "'";
                 }
 
                 if (Objects.equals(currentTable, "Query")) {
-                    message = "Are you sure you want to send the following response for query #" + cqID + "?\n\n" +
-                            "queryID: " + cqID + "\nresponderID: " + responderID + "\nresponse: " + response;
+                    message = "Are you sure you want to send the following response for query ticket #" + cqID + "?\n\n" +
+                            "Response: '" + response + "'";
                 }
 
                 //Code to send message to server
