@@ -61,7 +61,7 @@ public class AdvisorDashboard {
         mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         cqPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        cqPanel.add(new JLabel("Pending Complaints/Queries"));
+        cqPanel.add(new JLabel("Pending Complaints & Queries"));
         tablePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
