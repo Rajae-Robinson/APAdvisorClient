@@ -5,8 +5,7 @@
 
 package view;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
+import javax.swing.*;
 import java.awt.*;
 
 public class DefaultFrame extends JFrame {
@@ -15,8 +14,15 @@ public class DefaultFrame extends JFrame {
 		this.setSize(1024, 768);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		ImageIcon logo = new ImageIcon("img/logo.png");
+		ImageIcon logo = new ImageIcon("../img/logo.jpg");
 		this.setIconImage(logo.getImage());
 		this.setLocationRelativeTo(null);
+		JFrame.setDefaultLookAndFeelDecorated(true);
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			SwingUtilities.updateComponentTreeUI(this);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

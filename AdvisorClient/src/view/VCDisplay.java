@@ -68,6 +68,7 @@ public class VCDisplay {
                 pendingRequests.setEnabled(true);
                 acceptCall.setEnabled(true);
                 declineCall.setEnabled(true);
+                returnBtn.setEnabled(false);
             }
         });
 
@@ -78,6 +79,7 @@ public class VCDisplay {
                 pendingRequests.setEnabled(false);
                 acceptCall.setEnabled(false);
                 declineCall.setEnabled(false);
+                returnBtn.setEnabled(true);
             }
         });
 
