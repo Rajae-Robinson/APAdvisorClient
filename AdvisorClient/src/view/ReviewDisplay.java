@@ -121,7 +121,7 @@ public class ReviewDisplay {
                         model.setRowCount(0);
 
                         currentTable = "Complaint";
-                        String[] columnNames = {"Complaint ID", "Complaint Category", "Details of Issue", "Your Response"};
+                        String[] columnNames = {"Complaint ID", "Complaint Category", "Details of Issue", "Response"};
                         model.setColumnIdentifiers(columnNames);
 
                         for (Complaint complaint : pastComplaintsList) {
@@ -163,7 +163,7 @@ public class ReviewDisplay {
                         model.setRowCount(0);
 
                         currentTable = "Query";
-                        String[] columnNames = {"Query ID", "Query Category", "Details of Issue", "Your Response"};
+                        String[] columnNames = {"Query ID", "Query Category", "Details of Issue", "Response"};
                         model.setColumnIdentifiers(columnNames);
 
                         for (Query query : pastQueriesList) {
