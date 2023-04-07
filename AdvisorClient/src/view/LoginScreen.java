@@ -38,9 +38,9 @@ public class LoginScreen implements ActionListener {
         
         
         // Create the input fields and their labels
-        JLabel idLabel = new JLabel("ID:");
+        JLabel idLabel = new JLabel("ID: ");
         idField = new JTextField(7);
-        JLabel passwordLabel = new JLabel("Password:");
+        JLabel passwordLabel = new JLabel("Password: ");
         passwordField = new JPasswordField(20); // 20 is the number of columns in the password field
         
         loginButton = new JButton("Login");
@@ -109,7 +109,7 @@ public class LoginScreen implements ActionListener {
 	         if (isAuthenticated) {
                  loginID =id;
 	             JOptionPane.showMessageDialog(loginFrame, "Login successful");
-	             AdvisorDashboard.main(null);
+	             new AdvisorDashboard();
 	             loginFrame.dispose(); // Close the login frame
 	         } else {
 	             JOptionPane.showMessageDialog(loginFrame, "Invalid ID or password");

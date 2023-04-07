@@ -7,6 +7,7 @@ package view;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import java.awt.*;
 
 public class DefaultFrame extends JFrame {
 	public DefaultFrame() {
@@ -14,7 +15,8 @@ public class DefaultFrame extends JFrame {
 		this.setSize(1024, 768);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		ImageIcon logo = new ImageIcon("../img/logo.png");
+		ImageIcon logo = new ImageIcon("img/logo.png");
 		this.setIconImage(logo.getImage());
+		this.setLocationRelativeTo(null);
 	}
 }

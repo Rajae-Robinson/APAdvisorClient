@@ -25,6 +25,7 @@ public class AdvisorDashboard {
     JButton complaintBtn;
     JButton queryBtn;
     JButton sendButton;
+    JButton reviewBtn;
     JDialog dialog;
     JPanel mainPanel;
     JPanel cqPanel;
@@ -58,22 +59,26 @@ public class AdvisorDashboard {
     private void initialiseComponents() {
         //Initialise the panels and define layouts
         mainPanel = new JPanel(new BorderLayout());
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         cqPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         cqPanel.add(new JLabel("Pending Complaints/Queries"));
         tablePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
         //Initialise the buttons
         replyBtn = new JButton("Reply");
         videoCallBtn = new JButton("Join a Video Call");
-        complaintBtn = new JButton("Complaints");
-        queryBtn = new JButton("Queries");
+        complaintBtn = new JButton("Get Pending Complaints");
+        queryBtn = new JButton("Get Pending Queries");
+        reviewBtn = new JButton("Past Complaints & Queries");
 
         replyBtn.setPreferredSize(new Dimension(150, 50));
         replyBtn.setEnabled(false); // disable the reply button initially
         videoCallBtn.setPreferredSize(new Dimension(150, 50));
-        complaintBtn.setPreferredSize(new Dimension(150, 50));
+        complaintBtn.setPreferredSize(new Dimension(180, 50));
         queryBtn.setPreferredSize(new Dimension(150, 50));
+        reviewBtn.setPreferredSize(new Dimension(200, 50));
 
         //Initialise the table
         columnNames = new String[]{"-", "-", "-", "-", "-", "-","-"};
@@ -91,7 +96,16 @@ public class AdvisorDashboard {
     private void addActionListeners() {
         videoCallBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                System.out.println("Live call button pressed...");
                 new VCDisplay();
+                frame.dispose();
+            }
+        });
+
+        reviewBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Switching to past complaints & queries view...");
+                new ReviewDisplay();
                 frame.dispose();
             }
         });
@@ -113,9 +127,6 @@ public class AdvisorDashboard {
         //Creates an instance of the response window once the reply button is clicked
         replyBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //prevLocation = frame.getLocation();
-                //centerX = prevLocation.x + frame.getWidth() / 2;
-                //centerY = prevLocation.y + frame.getHeight() / 2;
                 responseWindow(studentID, name, email, contact, category, details);
             }
         });
@@ -149,11 +160,13 @@ public class AdvisorDashboard {
                             complaint.setEmail(student.getEmail());
                             complaint.setContactNumber(student.getContactNumber());
 
-                            Object[] data = {complaint.getComplaintID(), complaint.getStudentID(),
-                                    complaint.getFirstName() + " " + complaint.getLastName(),complaint.getEmail(),
-                                     complaint.getContactNumber(), complaint.getCategory(), complaint.getDetails()};
+                            if (complaint.getResponse() == null) {
+                                Object[] data = {complaint.getComplaintID(), complaint.getStudentID(),
+                                        complaint.getFirstName() + " " + complaint.getLastName(), complaint.getEmail(),
+                                        complaint.getContactNumber(), complaint.getCategory(), complaint.getDetails()};
 
-                            model.addRow(data);
+                                model.addRow(data);
+                            }
                         }
                     }
                 } catch (NullPointerException ex) {
@@ -191,11 +204,13 @@ public class AdvisorDashboard {
                             query.setEmail(student.getEmail());
                             query.setContactNumber(student.getContactNumber());
 
-                            Object[] data = {query.getQueryID(), query.getStudentID(),
-                                    query.getFirstName() + " " + query.getLastName(),query.getEmail(),
-                                    query.getContactNumber(), query.getCategory(), query.getDetails()};
+                            if (query.getResponse() == null) {
+                                Object[] data = {query.getQueryID(), query.getStudentID(),
+                                        query.getFirstName() + " " + query.getLastName(), query.getEmail(),
+                                        query.getContactNumber(), query.getCategory(), query.getDetails()};
 
-                            model.addRow(data);
+                                model.addRow(data);
+                            }
                         }
                     }
                 } catch (NullPointerException ex) {
@@ -211,7 +226,7 @@ public class AdvisorDashboard {
                 if (!e.getValueIsAdjusting()) {  // Ignore extra events
                     int selectedRow = cqTable.getSelectedRow();
                     if (selectedRow != -1) {
-                        // Get the complaint/query deatils from the selected row
+                        // Get the complaint/query details from the selected row
                         cqID = (int) cqTable.getValueAt(selectedRow, 0);
                         studentID = (int) cqTable.getValueAt(selectedRow, 1);
                         name = (String) cqTable.getValueAt(selectedRow, 2);
@@ -236,6 +251,7 @@ public class AdvisorDashboard {
     private void addComponents() {
         tablePanel.add(scrollPane);
 
+        buttonPanel.add(reviewBtn);
         buttonPanel.add(complaintBtn);
         buttonPanel.add(queryBtn);
         buttonPanel.add(replyBtn);
@@ -341,7 +357,7 @@ public class AdvisorDashboard {
                         System.out.println("Response sent!\n");
                     }
 
-                    JOptionPane.showMessageDialog(frame, "Message sent!", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, "Response sent!", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
                     Window root = (Window) SwingUtilities.getRoot((JComponent) e.getSource());  //Gets the root frame of the 'source' which is
                                                                                                 //the object on which the event occurred
                     root.dispose(); // Disposes of the root frame (the ResponseWindow)
@@ -395,9 +411,5 @@ public class AdvisorDashboard {
         responsePanel.add(sendButton, BorderLayout.SOUTH);
         dialog.add(responsePanel);
         dialog.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new AdvisorDashboard();
     }
 }

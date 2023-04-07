@@ -34,6 +34,7 @@ public class VCDisplay {
     private void initialiseComponents() {
         //Initialise the panels and define layouts
         mainPanel = new JPanel(new BorderLayout());
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         statusPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         statusPanel.add(new JLabel("Video Call Availability"));
         selectionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -47,7 +48,7 @@ public class VCDisplay {
 
         //Initialise the combo box
         requests = new String[]{"Student 1", "Student 2", "Student 3"};
-        pendingRequests = new JComboBox<String>(requests);
+        pendingRequests = new JComboBox<>(requests);
         pendingRequests.setEditable(false);
 
         //Initialise the buttons
@@ -82,6 +83,7 @@ public class VCDisplay {
 
         returnBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                System.out.println("Returning to main dashboard...");
                 new AdvisorDashboard();
                 frame.dispose();
             }
@@ -118,9 +120,5 @@ public class VCDisplay {
 
         frame.add(mainPanel);
         frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new VCDisplay();
     }
 }
